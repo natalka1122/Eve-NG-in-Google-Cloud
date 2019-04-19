@@ -235,7 +235,8 @@ PermitRootLogin no
 
 > The start of the folder name is very important, and you need to include the trailing hyphen, the remainder of the folder name can be anything, but usually you would add the software version. So for a Nexus 9k the folder that houses the .qcow file must begin with `nxosv9k-` the final folder name in this example will be `nxosv9k-7.0.3.I7.2`
 
-```root@eve-ng:/opt/unetlab/addons/qemu# ls 
+```
+root@eve-ng:/opt/unetlab/addons/qemu# ls 
 nxosv9k-7.0.3.I7.2
 ```
 
