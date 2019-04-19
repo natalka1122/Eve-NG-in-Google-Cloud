@@ -32,7 +32,8 @@ You will see the below output:
 
 ```Enabling service [compute.googleapis.com] on project [838774168112]...Waiting for async operation operations/acf.4c7e21aa-6f18-4286-b0f4-10fba7115f88 to complete…
 
-Operation finished successfully. The following command can describe the Operation details: gcloud services operations describe operations/tmo-acf.4c7e21aa-6f18-4286-b0f4-10fba7115f88Created [https://www.googleapis.com/compute/v1/projects/eve-ng-238108/global/images/nested-virt-ubuntu].NAME PROJECT FAMILY DEPRECATED STATUSnested-virt-ubuntu eve-ng-238108 READY```
+Operation finished successfully. The following command can describe the Operation details: gcloud services operations describe operations/tmo-acf.4c7e21aa-6f18-4286-b0f4-10fba7115f88Created [https://www.googleapis.com/compute/v1/projects/eve-ng-238108/global/images/nested-virt-ubuntu].NAME PROJECT FAMILY DEPRECATED STATUSnested-virt-ubuntu eve-ng-238108 READY
+```
 
 > The ‘READY’ status indicated a successful install
 
@@ -56,56 +57,58 @@ Zone = `us-east1-b`
 
 > If you want to run IOS-XR, IOS-XRV or CSR1000v or even a lot of NXOS devices, increasing vCPU’s is a good idea. So the below customised settings are just an example. 
 
-Machine Type 
-Leave it at ‘1 vCPU’ and click Customise 
-With the sliders select 4 vCPU and 4GB of Memory. 
-CPU platform = Intel Skylake or later 
-GPUs = None 
-Boot disk = Click Change and select the images we created in the previous step. 
-Click Custom Images & select eve-ng 
-Click radio button ‘nested-virt-ubuntu’ 
-Boot disk the = Standard persistent disk 
-Size (GB) = This depends on you and how many eve-ng images and projects you will be using. But lets pick ‘25GB' 
-Identity and API access = leave as 'Allow default access' 
-Firewall = Allow HTTP traffic (so you can get to the eve-ng web interface) 
-Click on 'Management, security, disks, networking, sole tenancy’ 
-Click ‘Networking' 
-Click the 'pencil' 
-# We will use and internal and an external IP 
-# Selecting a static external IP is of course better, but it has additional costs, check them out if you want a static public IP. But I'm selecting the default ‘Ephemeral' 
-Primary internal IP = Ephemeral (Automatic) 
-External IP = Ephemeral 
-Network Service Tier = Standard 
-# Because we chose South Carolina, we get the option to choose the cheaper standard tier. 
-# Premium provides better HA, better failover, AnyCast IPs and more features. Standard is more best effort. 
-Click ‘Done’ 
-Click ‘Create’ 
-# This will create and start the VM. 
-# After a while you will see the VM’s details including its Internal and External IP. 
-# The 3 vertical disclosure dots on the right will give you options including Start, Stop and Delete, amongst others. 
-# You can also download the Google Cloud app to access your VM’s from your phone to start and stop them. Might come in handy when you forget you left an instance running with 16 vCPU’s and 100GB of memory! 
-Click on ‘SSH’ 
-# There will be a key exchange and you will then be connected. 
-Assume root and set a password: 
-nico@instance-1:~$ sudo -s 
+
+* 'Machine Type' Leave it at ‘1 vCPU’ and click 'Customise'
+* With the sliders select 4 vCPU and 4GB of Memory. 
+* CPU platform = Intel Skylake or later 
+* GPUs = None 
+* Boot disk = Click 'Change' and select the images we created in the previous step. 
+* Click `Custom Images` & select `eve-ng` 
+* Click radio button `nested-virt-ubuntu` 
+* Boot disk = `Standard persistent disk`
+* Size (GB) = This depends on you and how many eve-ng images and projects you will be using. But lets pick `25GB` 
+* Identity and API access = leave as `Allow default access` 
+* Firewall = `Allow HTTP traffic` (so you can get to the eve-ng web interface) 
+* Click on `Management, security, disks, networking, sole tenancy` 
+* Click `Networking`
+* Click the `pencil`
+> We will use and internal and an external IP 
+> Selecting a static external IP is of course better, but it has additional costs, check them out if you want a static public IP. But I'm selecting the default `Ephemeral` 
+* Primary internal IP = `Ephemeral (Automatic)` 
+* External IP = `Ephemeral` 
+* Network Service Tier = `Standard`
+> Because we chose 'South Carolina' we get the option to choose the cheaper 'standard tier' 
+> Premium provides better HA, better failover, AnyCast IPs and more features. Standard is more a best effort service. 
+* Click `Done`
+* Click `Create`
+> This will create and start the VM. 
+> After a while you will see the VM’s details including its Internal and External IP. 
+> The 3 vertical disclosure dots on the right will give you options including 'Start', 'Stop' and 'Delete', amongst others. 
+> You can also download the Google Cloud app to access your VM’s from your phone to start and stop them. Might come in handy when you forget you left an instance running with 16 vCPU’s and 100GB of memory! 
+* Click on `SSH` 
+> There will be a key exchange and you will then be connected. 
+* Assume root and set a password: 
+```nico@instance-1:~$ sudo -s 
 root@instance-1:~# passwd 
 Enter new UNIX password:  
 Retype new UNIX password:  
-password updated successfully 
-# Allow root to log in via ssh 
-root@instance-1:~# vim /etc/ssh/sshd_config 
-# Change PermitRootLogin to yes 
-# Authentication:
-PermitRootLogin yes 
-# Change to no to disable tunnelled clear text passwords
-PasswordAuthentication yes 
-# Use keys if you want to be more secure. 
-# Restart ssh 
-'service sshd restart' 
-# Now we should be able to log in via ssh from your favourite terminal emulator.  
-# eve-ng requires the first nic to be named eth0 
-# Note ours is currently called ens4 
-root@instance-1:~# ifconfig 
+password updated successfully
+```
+* Allow root to log in via ssh 
+'root@instance-1:~# vim /etc/ssh/sshd_config'
+* Change `PermitRootLogin` to `yes` 
+```Authentication:
+PermitRootLogin yes
+```
+* Change to no to disable tunnelled clear text passwords
+`PasswordAuthentication yes`
+> Use keys if you want to be more secure. 
+* Restart ssh 
+`service sshd restart` 
+* Now we should be able to log in via ssh from your favourite terminal emulator.  
+* eve-ng requires the first NIC to be named `eth0` 
+* Note ours is currently called `ens4`
+```root@instance-1:~# ifconfig 
 ens4      Link encap:Ethernet  HWaddr 42:01:0a:8e:00:02   
           inet addr:10.142.0.2  Bcast:10.142.0.2  Mask:255.255.255.255 
           inet6 addr: fe80::4001:aff:fe8e:2/64 Scope:Link 
@@ -114,21 +117,23 @@ ens4      Link encap:Ethernet  HWaddr 42:01:0a:8e:00:02  
           TX packets:1899 errors:0 dropped:0 overruns:0 carrier:0 
           collisions:0 txqueuelen:1000 
           RX bytes:862718 (862.7 KB)  TX bytes:230363 (230.3 KB) 
-
-root@instance-1:~# vim /etc/udev/rules.d/70-persistent-net.rules
+```
+* Rename the NIC
+```root@instance-1:~# vim /etc/udev/rules.d/70-persistent-net.rules
 SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="42:01:0a:8e:00:02", NAME=“eth0" 
-
+```
 # Reboot 
-root@instance-1:~# shutdown -r now 
+`root@instance-1:~# shutdown -r now`
 
-# Download the gpg.key, install the new repository, install eve-ng. Run the below commands individually, and when installing eve-ng answer be conscious it will as you for a new MySQL password which you should enter: 
-
+* Next download the gpg.key, install the new repository, install eve-ng. Run the below commands individually, and when installing eve-ng answer be conscious it will as you for a new MySQL password which you should enter: 
+```
 root@instance-1:~# wget http://www.eve-ng.net/repo/eczema@ecze.com.gpg.key 
 root@instance-1:~# apt-key add eczema@ecze.com.gpg.key 
 root@instance-1:~# apt update 
 root@instance-1:~# add-apt-repository "deb [arch=amd64] http://www.eve-ng.net/repo xenial main" 
 root@instance-1:~# apt update 
 root@instance-1:~# apt-get install eve-ng 
+```
 # Run the below command again, you will notice more being installed. 
 # When asked 'What do you want to do about modified configuration file kernel-img.conf? Select 'keep the local version currently installed' 
 root@instance-1:~# apt-get install eve-ng 
