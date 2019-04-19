@@ -31,12 +31,8 @@ Say `yes` to the below message if you receive it:
 You will see the below output:
 
 ```Enabling service [compute.googleapis.com] on project [838774168112]...Waiting for async operation operations/acf.4c7e21aa-6f18-4286-b0f4-10fba7115f88 to complete…
-```
-
-```
 Operation finished successfully. The following command can describe the Operation details: gcloud services operations describe operations/tmo-acf.4c7e21aa-6f18-4286-b0f4-10fba7115f88Created [https://www.googleapis.com/compute/v1/projects/eve-ng-238108/global/images/nested-virt-ubuntu].NAME PROJECT FAMILY DEPRECATED STATUSnested-virt-ubuntu eve-ng-238108 READY
 ```
-
 > The ‘READY’ status indicated a successful install
 
 Click the 3 bars on the top left and select Compute Engine 
