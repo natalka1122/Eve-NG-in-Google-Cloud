@@ -95,7 +95,7 @@ Retype new UNIX password: 
 password updated successfully
 ```
 * Allow root to log in via ssh 
-'root@instance-1:~# vim /etc/ssh/sshd_config'
+`root@instance-1:~# vim /etc/ssh/sshd_config`
 * Change `PermitRootLogin` to `yes` 
 ```Authentication:
 PermitRootLogin yes
@@ -122,10 +122,10 @@ ens4      Link encap:Ethernet  HWaddr 42:01:0a:8e:00:02  
 ```root@instance-1:~# vim /etc/udev/rules.d/70-persistent-net.rules
 SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="42:01:0a:8e:00:02", NAME=“eth0" 
 ```
-# Reboot 
+* Reboot 
 `root@instance-1:~# shutdown -r now`
 
-* Next download the gpg.key, install the new repository, install eve-ng. Run the below commands individually, and when installing eve-ng answer be conscious it will as you for a new MySQL password which you should enter: 
+> Next download the gpg.key, install the new repository, install eve-ng. Run the below commands individually, and when installing eve-ng answer be conscious it will as you for a new MySQL password which you should enter: 
 ```
 root@instance-1:~# wget http://www.eve-ng.net/repo/eczema@ecze.com.gpg.key 
 root@instance-1:~# apt-key add eczema@ecze.com.gpg.key 
@@ -134,23 +134,22 @@ root@instance-1:~# add-apt-repository "deb [arch=amd64] http://www.eve-ng.net/re
 root@instance-1:~# apt update 
 root@instance-1:~# apt-get install eve-ng 
 ```
-# Run the below command again, you will notice more being installed. 
-# When asked 'What do you want to do about modified configuration file kernel-img.conf? Select 'keep the local version currently installed' 
-root@instance-1:~# apt-get install eve-ng 
-# One last time and you will see all is ‘Done’ this time 
-root@instance-1:~# apt-get install eve-ng 
+* Run the `apt-get install eve-ng` command again, you will notice more being installed. 
+* When asked 'What do you want to do about modified configuration file kernel-img.conf? Select `keep the local version currently installed` 
 
+`root@instance-1:~# apt-get install eve-ng`
+
+* Run it one last time and you will see all is ‘Done’ this time 
 ‘''root@eve-ng:~# apt-get install eve-ng 
 Reading package lists... Done 
 Building dependency tree        
 Reading state information... Done 
 eve-ng is already the newest version (2.0.3-95). 
 0 upgraded, 0 newly installed, 0 to remove and 12 not upgraded. 
-root@eve-ng:~#’’' 
-
-# Log out and back in as root 
-# You will be presented with the Eve-NG Setup utility 
-
+```
+* Log out and back in as root 
+* You will be presented with the Eve-NG Setup utility 
+```
                                  +-----------Root Password--------------+ 
                                  | Type the Root Password:              | 
                                  | +----------------------------------+ | 
@@ -159,26 +158,27 @@ root@eve-ng:~#’’'
                                  +--------------------------------------+ 
                                  |               <  OK  >               | 
                                  +--------------------------------------+ 
-
-Next, next, next all the way through, dont set a password or anything else outside of the defaults. 
+```
+* Select next, next, next all the way through, dont set a password or anything else outside of the defaults. 
 You will be kicked out of the ssh session but should be able to ssh back in when needed. 
 
-But for now from the Google Cloud Platform Dashboard click the arrow in the right corner of the external IP address to HTTP to eve-ng. 
+* But for now from the Google Cloud Platform Dashboard click the arrow in the right corner of the external IP address, this will HTTP to eve-ng. 
 
-You should now be able to log on with the default username ‘admin’ password ‘eve’ 
+* You should now be able to log on with the default username `admin` password `eve` 
 
-# eve-ng requires the kernel to be 4.9 
+> eve-ng requires the kernel to be 4.9 
 
-Check what kernel you are using: 
+* Check what kernel you are using: 
 
-‘''root@eve-ng:~# uname -r 
-4.15.0-1029-gcp’’' 
+```root@eve-ng:~# uname -r 
+4.15.0-1029-gcp
+```
 
-Change the kernel by performing below commands, there might be a better way to do this, let me me know: 
+* Change the kernel by executing below commands, there might be a better way to do this, let me know if so: 
 
-root@eve-ng:~# cd /boot/ 
+`root@eve-ng:~# cd /boot/`
 
-root@eve-ng:/boot# ls -lah 
+```root@eve-ng:/boot# ls -lah 
 total 74M 
 drwxr-xr-x  3 root root 4.0K Apr 19 11:27 . 
 drwxr-xr-x 24 root root 4.0K Apr 19 11:32 .. 
@@ -191,10 +191,10 @@ drwxr-xr-x  5 root root 4.0K Apr 19 11:27 grub
 -rw-------  1 root root 3.5M Sep 15  2017 System.map-4.9.40-eve-ng-ukms-2+ 
 -rw-------  1 root root 7.8M Mar 25 11:23 vmlinuz-4.15.0-1029-gcp 
 -rw-------  1 root root 7.0M Sep 15  2017 vmlinuz-4.9.40-eve-ng-ukms-2+ 
-
-root@eve-ng:/boot# mkdir ./old/ 
-root@eve-ng:/boot# mv *4.15* ./old/ 
-root@eve-ng:/boot# ls -lah 
+```
+`root@eve-ng:/boot# mkdir ./old/`
+`root@eve-ng:/boot# mv *4.15* ./old/`
+```root@eve-ng:/boot# ls -lah 
 total 41M 
 drwxr-xr-x  4 root root 4.0K Apr 19 11:45 . 
 drwxr-xr-x 24 root root 4.0K Apr 19 11:32 .. 
@@ -204,50 +204,53 @@ drwxr-xr-x  5 root root 4.0K Apr 19 11:27 grub
 drwxr-xr-x  2 root root 4.0K Apr 19 11:45 old 
 -rw-------  1 root root 3.5M Sep 15  2017 System.map-4.9.40-eve-ng-ukms-2+ 
 -rw-------  1 root root 7.0M Sep 15  2017 vmlinuz-4.9.40-eve-ng-ukms-2+ 
+```
+> Notice all the 4.15 files have been moved. 
 
-# Notice all the 4.15 files have been moved. 
-
-# Edit grub to keep the interface naming and also add ‘noquiet' 
-root@eve-ng:/boot# sed -i -e  's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="net.ifnames=0 noquiet"/' /etc/default/grub 
-
-# Update grub, notice it found the 4.9 kernel version. 
-root@eve-ng:/boot# update-grub 
+* Edit grub to keep the interface naming and also add `noquiet` 
+```root@eve-ng:/boot# sed -i -e  's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="net.ifnames=0 noquiet"/' /etc/default/grub 
+```
+* Update grub, notice it found the `4.9` kernel version. 
+```root@eve-ng:/boot# update-grub 
 Generating grub configuration file ... 
 Found linux image: /boot/vmlinuz-4.9.40-eve-ng-ukms-2+ 
 Found initrd image: /boot/initrd.img-4.9.40-eve-ng-ukms-2+ 
 done 
+```
+* Restart 
+`root@eve-ng:/boot# shutdown -r now`
 
-# Restart 
-root@eve-ng:/boot# shutdown -r now 
-
-# Create a new non-root user, ssh to eve-ng
-root@eve-ng:~# sudo adduser nico
+* Create a new non-root user, ssh to eve-ng
+```root@eve-ng:~# sudo adduser nico
 root@eve-ng:~# sudo usermod -a -G sudo nico
-# Disable root from sshing
-root@eve-ng:~# vim /etc/ssh/sshd_config 
+```
+* Disable root from sshing
+```root@eve-ng:~# vim /etc/ssh/sshd_config 
 PermitRootLogin no 
+```
 
-# You might notice that when you log in via HTTP and go to System > System Status page that UKSM is now green. 
+> You might notice that when you log in via HTTP and go to System > System Status page that UKSM is now green. 
 
-# Copy .qcow file to the required directory. Any image copied here will show up in the eve-ng GUI, and you need to name each folder what holds the qemu file in a specific way listed HERE https://www.eve-ng.net/documentation/images-table 
+* Copy a .qcow file to '/opt/unetlab/addons/qemu'. Any image copied here will show up in the eve-ng GUI, and you need to name each folder what holds the qemu file in a specific way listed [HERE](https://www.eve-ng.net/documentation/images-table)
 
-# Basically the start is important and you need to include the hyphen, then the remainder of the folder name can be anything, but usually you would add the software version. So for a Nexus 9k the golfer that houses the .qcow must begin with 'nxosv9k-‘ the final folder name in this example will be 'nxosv9k-7.0.3.I7.2' 
+> The start of the folder name is very important, and you need to include the trailing hyphen, the remainder of the folder name can be anything, but usually you would add the software version. So for a Nexus 9k the folder that houses the .qcow file must begin with `nxosv9k-` the final folder name in this example will be `nxosv9k-7.0.3.I7.2`
 
-‘''root@eve-ng:/opt/unetlab/addons/qemu# ls 
-nxosv9k-7.0.3.I7.2’’’ 
+```root@eve-ng:/opt/unetlab/addons/qemu# ls 
+nxosv9k-7.0.3.I7.2
+```
+* SCP your qemu/qcow image to the appropriately name folder to `/opt/unetlab/addons/qemu`
 
-SCP your emu/qcow image to the appropriately name folder to this location /opt/unetlab/addons/qemu 
+> In my case the full path is below: 
 
-In my case the full path is below: 
+`/opt/unetlab/addons/qemu/nxosv9k-7.0.3.I7.2/` 
 
-'/opt/unetlab/addons/qemu/nxosv9k-7.0.3.I7.2/' 
+* After you copy files its recommended to fix the permissions using the below command: 
+`/opt/unetlab/wrappers/unl_wrapper -a fixpermissions`
 
-After you copy files its recommended to fix the permissions using the below command: 
-'/opt/unetlab/wrappers/unl_wrapper -a fixpermissions’
+* Browse to the web GUI 
+[http://35.211.127.1](http://35.211.127.1)
 
-# Browse to the web GUI 
-http://35.211.127.1
+* From File manager click on `Add new lab` and enter some details, then click `Save` 
+* From the new lab, right click on a blank space and select `Node` to add a device.
 
-From File manager click on ‘Add new lab’ and enter some details, then click 'Save' 
-From the new lab, right click on a blank space and select ‘Node’ 
 
