@@ -173,8 +173,8 @@ root@eve-ng:~# uname -r
 4.15.0-1029-gcp
 ```
 * Change the kernel by executing below commands, there might be a better way to do this, let me know if so: 
-`root@eve-ng:~# cd /boot/`
-```root@eve-ng:/boot# ls -lah 
+```root@eve-ng:~# cd /boot/
+root@eve-ng:/boot# ls -lah 
 total 74M 
 drwxr-xr-x  3 root root 4.0K Apr 19 11:27 . 
 drwxr-xr-x 24 root root 4.0K Apr 19 11:32 .. 
@@ -187,10 +187,10 @@ drwxr-xr-x  5 root root 4.0K Apr 19 11:27 grub
 -rw-------  1 root root 3.5M Sep 15  2017 System.map-4.9.40-eve-ng-ukms-2+ 
 -rw-------  1 root root 7.8M Mar 25 11:23 vmlinuz-4.15.0-1029-gcp 
 -rw-------  1 root root 7.0M Sep 15  2017 vmlinuz-4.9.40-eve-ng-ukms-2+ 
-```
-`root@eve-ng:/boot# mkdir ./old/`
-`root@eve-ng:/boot# mv *4.15* ./old/`
-```root@eve-ng:/boot# ls -lah 
+
+root@eve-ng:/boot# mkdir ./old/
+root@eve-ng:/boot# mv *4.15* ./old/
+root@eve-ng:/boot# ls -lah 
 total 41M 
 drwxr-xr-x  4 root root 4.0K Apr 19 11:45 . 
 drwxr-xr-x 24 root root 4.0K Apr 19 11:32 .. 
