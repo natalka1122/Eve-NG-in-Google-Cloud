@@ -55,7 +55,6 @@ Zone = `us-east1-b`
 
 > If you want to run IOS-XR, IOS-XRV or CSR1000v or even a lot of NXOS devices, increasing vCPU’s is a good idea. So the below customised settings are just an example. 
 
-
 * 'Machine Type' Leave it at ‘1 vCPU’ and click 'Customise'
 * With the sliders select 4 vCPU and 4GB of Memory. 
 * CPU platform = Intel Skylake or later 
@@ -138,7 +137,7 @@ root@instance-1:~# apt-get install eve-ng
 `root@instance-1:~# apt-get install eve-ng`
 
 * Run it one last time and you will see all is ‘Done’ this time 
-‘''root@eve-ng:~# apt-get install eve-ng 
+```root@eve-ng:~# apt-get install eve-ng 
 Reading package lists... Done 
 Building dependency tree        
 Reading state information... Done 
@@ -148,7 +147,7 @@ eve-ng is already the newest version (2.0.3-95).
 * Log out and back in as root 
 * You will be presented with the Eve-NG Setup utility 
 
-                                 +-----------Root Password--------------+ 
+                              ```+-----------Root Password--------------+ 
                                  | Type the Root Password:              | 
                                  | +----------------------------------+ | 
                                  | |                                  | | 
@@ -156,7 +155,7 @@ eve-ng is already the newest version (2.0.3-95).
                                  +--------------------------------------+ 
                                  |               <  OK  >               | 
                                  +--------------------------------------+ 
-
+```
 * Select next, next, next all the way through, dont set a password or anything else outside of the defaults. 
 You will be kicked out of the ssh session but should be able to ssh back in when needed. 
 
