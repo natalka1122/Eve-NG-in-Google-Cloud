@@ -4,57 +4,58 @@ How to install Eve-NG in Google Cloud
 #### Create a Googe Cloud account and log in
 https://cloud.google.com/
 
-Click 'Go To Console'
-Click 'Select a project'
-Click 'New Project' 
-Project name = 'eve-ng'
-Click 'Create'
+Click `Go To Console`
+Click `Select a project`
+Click `New Project`
+Project name = `eve-ng`
+Click '`Create`
 
-> After a short wait, notice the project now says ‘eve-ng’ 
+> After a short wait, notice the project now says `eve-ng` 
 
 > You are now back at the customisable dashboard for this project. 
 
-Click 'Activate Cloud Shell' (in top right toolbar) 
+Click `Activate Cloud Shell` (in top right toolbar) 
 
-> The below command will create the nested virtualization supported image based on Ubuntu 16.04 LTS. 
+> The below command will create the nested virtualization supported image based on `Ubuntu 16.04 LTS`. 
+
 Paste the below command into the shell terminal: 
 
-'''gcloud compute images create nested-virt-ubuntu --source-image-project=ubuntu-os-cloud --source-image-family=ubuntu-1604-lts --licenses="https://www.google.com/compute/v1/projects/vm-options/global/licenses/enable-vmx”'''
+```gcloud compute images create nested-virt-ubuntu --source-image-project=ubuntu-os-cloud --source-image-family=ubuntu-1604-lts --licenses="https://www.google.com/compute/v1/projects/vm-options/global/licenses/enable-vmx”```
 
 > The above command is invoking gcloud’s compute resources and creating an ubuntu image named nested-virt-ubuntu using the ubuntu-os-cloud source image with ubuntu version 16.4 which is what eve-ng requires.  It will not work on version 18 for example.  Then the last part is the license and where vmx (nested virtualisation) is activated. 
 
-Say 'yes' to the below message if you receive it: 
+Say `yes` to the below message if you receive it: 
 
-'''API [compute.googleapis.com] not enabled on project [838774168112].Would you like to enable and retry (this will take a few minutes)?(y/N)?''' 
+```API [compute.googleapis.com] not enabled on project [838774168112].Would you like to enable and retry (this will take a few minutes)?(y/N)?```
 
 You will see the below output: 
 
-Enabling service [compute.googleapis.com] on project [838774168112]...Waiting for async operation operations/acf.4c7e21aa-6f18-4286-b0f4-10fba7115f88 to complete… 
+```Enabling service [compute.googleapis.com] on project [838774168112]...Waiting for async operation operations/acf.4c7e21aa-6f18-4286-b0f4-10fba7115f88 to complete… 
 
 Operation finished successfully. The following command can describe the Operation details: gcloud services operations describe operations/tmo-acf.4c7e21aa-6f18-4286-b0f4-10fba7115f88Created [https://www.googleapis.com/compute/v1/projects/eve-ng-238108/global/images/nested-virt-ubuntu].NAME PROJECT FAMILY DEPRECATED STATUSnested-virt-ubuntu eve-ng-238108 READY 
-nico@cloudshell:~ (eve-ng-238108)$ 
+nico@cloudshell:~ (eve-ng-238108)$```
 
-# The ‘READY’ status indicated a successful install. 
+> The ‘READY’ status indicated a successful install. 
 
 Click the 3 bars on the top left and select Compute Engine 
 
-# This is where we build the VM and define its properties. 
+> This is where we build the VM and define its properties. 
 
-From the VM Instance pop-up, click Create 
+From the VM Instance pop-up, click `Create`
 
 Enter the below properties. 
 
-Name = eve-ng 
-Region = us-east1 (South Carolina) 
-Zone = us-east1-b 
+Name = `eve-ng` 
+Region = `us-east1 (South Carolina)`
+Zone = `us-east1-b`
 
-# You can choose other Regions, but some are premium tier and more costly for the networking. South Carolina is a standard tier.  This is the same for Zones. Moving between Regions is possible, but is not just a case of selecting a new region.  An export is required.  The costs are shown on the right. Australia is more costly, but of course choosing a region closer to you is better from a latency perspective. 
+> You can choose other Regions, but some are premium tier and more costly for the networking. South Carolina is a standard tier.  This is the same for Zones. Moving between Regions is possible, but is not just a case of selecting a new region.  An export is required.  The costs are shown on the right. Australia is more costly, but of course choosing a region closer to you is better from a latency perspective. 
 
-# South Carolina currently has a $24.67 monthly estimate, whereas Australia is approximately $34.98. 
+> South Carolina currently has a $24.67 monthly estimate, whereas Australia is approximately $34.98. 
 
-# The more vCPU’s you use will increase the monthly cost. But remember when the instance is turned off you will not be charged.  Note that there are some services which even when the instance is off generates some charges, like static IPs and persistent storage for example. But the bulk of fees are from uptime. 
+> The more vCPU’s you use will increase the monthly cost. But remember when the instance is turned off you will not be charged.  Note that there are some services which even when the instance is off generates some charges, like static IPs and persistent storage for example. But the bulk of fees are from uptime. 
 
-# If you want to run IOS-XR, IOS-XRV or CSR1000v or even a lot of NXOS devices, increasing vCPU’s is a good idea. So the below customised settings are just an example. 
+> If you want to run IOS-XR, IOS-XRV or CSR1000v or even a lot of NXOS devices, increasing vCPU’s is a good idea. So the below customised settings are just an example. 
 
 Machine Type 
 Leave it at ‘1 vCPU’ and click Customise 
