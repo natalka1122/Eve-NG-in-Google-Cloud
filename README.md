@@ -1,4 +1,4 @@
-# Eve-NG-in-Google-Cloud :robot:
+# Eve-NG-in-Google-Cloud :cloud:
 How to install Eve-NG in Google Cloud
 
 #### Create a Googe Cloud account and log in
