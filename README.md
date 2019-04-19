@@ -204,9 +204,11 @@ drwxr-xr-x  2 root root 4.0K Apr 19 11:45 old
 > Notice all the 4.15 files have been moved. 
 
 * Edit grub to keep the interface naming and also add `noquiet` 
-```root@eve-ng:/boot# sed -i -e  's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="net.ifnames=0 noquiet"/' /etc/default/grub 
+
 ```
-* Update grub, notice it found the `4.9` kernel version. 
+root@eve-ng:/boot# sed -i -e  's/GRUB_CMDLINE_LINUX_DEFAULT=.*/GRUB_CMDLINE_LINUX_DEFAULT="net.ifnames=0 noquiet"/' /etc/default/grub 
+```
+* Update grub, notice it found the `4.9` kernel version
 ```root@eve-ng:/boot# update-grub 
 Generating grub configuration file ... 
 Found linux image: /boot/vmlinuz-4.9.40-eve-ng-ukms-2+ 
@@ -248,5 +250,3 @@ nxosv9k-7.0.3.I7.2
 
 * From File manager click on `Add new lab` and enter some details, then click `Save` 
 * From the new lab, right click on a blank space and select `Node` to add a device.
-
-
