@@ -147,7 +147,7 @@ eve-ng is already the newest version (2.0.3-95).
 ```
 * Log out and back in as root 
 * You will be presented with the Eve-NG Setup utility 
-```
+
                                  +-----------Root Password--------------+ 
                                  | Type the Root Password:              | 
                                  | +----------------------------------+ | 
@@ -156,7 +156,7 @@ eve-ng is already the newest version (2.0.3-95).
                                  +--------------------------------------+ 
                                  |               <  OK  >               | 
                                  +--------------------------------------+ 
-```
+
 * Select next, next, next all the way through, dont set a password or anything else outside of the defaults. 
 You will be kicked out of the ssh session but should be able to ssh back in when needed. 
 
