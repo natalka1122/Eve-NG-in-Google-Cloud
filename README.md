@@ -218,6 +218,8 @@ done
 * Restart 
 `root@eve-ng:/boot# shutdown -r now`
 
+* SSH back into the instance
+
 * Create a new non-root user, ssh to eve-ng
 ```root@eve-ng:~# sudo adduser nico
 root@eve-ng:~# sudo usermod -a -G sudo nico
