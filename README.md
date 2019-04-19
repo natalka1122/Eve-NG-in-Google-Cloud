@@ -251,6 +251,7 @@ nxosv9k-7.0.3.I7.2
 
 * Browse to the web GUI 
 [http://35.211.127.1](http://35.211.127.1)
+
 ![eve-ng](https://github.com/NetDevNotes/Eve-NG-in-Google-Cloud/blob/master/eve-ng.png)
 
 * From File manager click on `Add new lab` and enter some details, then click `Save` 
