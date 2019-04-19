@@ -238,6 +238,7 @@ PermitRootLogin no
 ```root@eve-ng:/opt/unetlab/addons/qemu# ls 
 nxosv9k-7.0.3.I7.2
 ```
+
 * SCP your qemu/qcow image to the appropriately name folder to `/opt/unetlab/addons/qemu`
 
 > In my case the full path is below: 
