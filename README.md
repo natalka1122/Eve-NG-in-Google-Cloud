@@ -280,8 +280,6 @@ nxosv9k-7.0.3.I7.2
 * Browse to the web GUI 
 [http://35.211.142.236](http://35.211.142.236)
 
-![eve-ng](https://github.com/NetDevNotes/Eve-NG-in-Google-Cloud/blob/master/system_status.png)
-
 * From File manager click on `Add new lab` and enter some details, then click `Save` 
 * From the new lab, right click on a blank space and select `Node` to add a device.
 * Select the `Cisco NX-OSv 9k` image
@@ -290,5 +288,5 @@ nxosv9k-7.0.3.I7.2
 * Right click the switch and click `Start'
 * Double click the switch to connect to it.
 > Note if using SevcureCRT for example, the default is a telnet connection on a high tcp port like port 32769.
-
+![eve-ng](https://github.com/NetDevNotes/Eve-NG-in-Google-Cloud/blob/master/system_status.png)
 **EOF**
