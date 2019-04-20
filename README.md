@@ -92,7 +92,7 @@ Name | Type | Description | Filters | Protocols/Ports | Action | Priority | Netw
 ---- | ---- | ----------- | -------  | ---------------  | ------  | -------- | ------- 
 eve-ng-inbound | Ingress | Allow ports for eve-ng | home-ip-address | tcp:32000-65535 | Allow | 1000 | default
 
-* Navigate back to Compute Engine > VM Instances
+* Navigate back to `Compute Engine > VM Instances`
 * Click on `SSH` 
 > There will be a key exchange and you will be connected. 
 * Assume root and set a password: 
@@ -143,7 +143,7 @@ SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="42:01:0a:8e:00:0
 * Reboot 
 `root@eve-ng:~# shutdown -r now`
 
-> Next download the gpg.key, install the new repository, install eve-ng. Run the below commands individually, and when installing eve-ng answer be conscious it will as you for a new MySQL password, just accept the default and press enter.
+> Next download the gpg.key, install the new repository and then install eve-ng. Run the below commands individually, and when installing eve-ng answer be conscious it will ask you for a new MySQL password, just accept the default and press enter.
 
 ```
 root@eve-ng:~# wget http://www.eve-ng.net/repo/eczema@ecze.com.gpg.key 
@@ -170,7 +170,7 @@ eve-ng is already the newest version (2.0.3-95).
 0 upgraded, 0 newly installed, 0 to remove and 12 not upgraded. 
 ```
 * Log out and back in as root 
-* You will be presented with the Eve-NG Setup utility 
+* You will be presented with the Eve-NG Setup utility, click Control-C to break out to bash:
 
 ```
 +-----------Root Password--------------+ 
@@ -183,14 +183,11 @@ eve-ng is already the newest version (2.0.3-95).
 +--------------------------------------+ 
 ```
 
-* Select next, next, next all the way through, dont set a password or anything else outside of the defaults. 
-You will be kicked out of the ssh session but should be able to ssh back in when needed. 
-
-* But for now from the Google Cloud Platform Dashboard click the arrow in the right corner of the external IP address, this will HTTP to eve-ng. 
+* Open `Google Cloud Platform Dashboard` and naviage to `Compute Engine > VM Instances`, and click the `arrow` in the right corner of the external IP address, this will HTTP to eve-ng. 
 
 * You should now be able to log on with the default username `admin` password `eve` 
 
-> eve-ng requires the kernel to be 4.9 
+> eve-ng requires the kernel to be 4.9.  If you say on the newer current kenrel and dont downgrade UKSM wont start. 
 
 * Check what kernel you are using: 
 
@@ -198,7 +195,7 @@ You will be kicked out of the ssh session but should be able to ssh back in when
 root@eve-ng:~# uname -r 
 4.15.0-1029-gcp
 ```
-* Change the kernel by executing below commands, there might be a better way to do this, let me know if so: 
+* Change the kernel by executing below commands, there might be a better way to do this, `let me know if so`: 
 
 ```
 root@eve-ng:~# cd /boot/
@@ -248,18 +245,18 @@ done
 
 > Notice 'System > System Status' page will now show UKSM as green. 
 
-* SSH back into the instance
+* SSH back into the instance (optional)
 
-* Create a new non-root user, ssh to eve-ng
+* Create a new non-root user, ssh to eve-ng (optional)
 ```root@eve-ng:~# sudo adduser nico
 root@eve-ng:~# sudo usermod -a -G sudo nico
 ```
-* Disable root from sshing
+* Disable root from sshing (optional)
 ```root@eve-ng:~# vim /etc/ssh/sshd_config 
 PermitRootLogin no 
 ```
 
-* Copy a .qcow file to '/opt/unetlab/addons/qemu'. Any image copied here will show up in the eve-ng GUI, and you need to name each folder what holds the qemu file in a specific way listed [HERE](https://www.eve-ng.net/documentation/images-table)
+* Copy a .qcow file to `/opt/unetlab/addons/qemu`. Any image copied here will show up in the eve-ng GUI, and you need to name each folder what holds the qemu file in a specific way listed [HERE](https://www.eve-ng.net/documentation/images-table)
 
 > The start of the folder name is very important, and you need to include the trailing hyphen, the remainder of the folder name can be anything, but usually you would add the software version. So for a Nexus 9k the folder that houses the .qcow file must begin with `nxosv9k-` the final folder name in this example will be `nxosv9k-7.0.3.I7.2`
 
