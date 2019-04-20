@@ -1,5 +1,5 @@
 # Eve-NG-in-Google-Cloud :cloud:
-How to install Eve-NG in Google Cloud
+How to install Eve-NG in Google Cloud. 
 
 ![Google Cloud Dashboard](https://github.com/NetDevNotes/Eve-NG-in-Google-Cloud/blob/master/gcloud-dashboard.png)
 
