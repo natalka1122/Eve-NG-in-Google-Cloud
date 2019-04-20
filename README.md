@@ -98,14 +98,14 @@ eve-ng-inbound | Ingress | Allow ports for eve-ng | home-ip-address | tcp:32000-
 * Assume root and set a password: 
 
 ```
-nico@instance-1:~$ sudo -s 
-root@instance-1:~# passwd 
+nico@eve-ng:~$ sudo -s 
+root@eve-ng:~# passwd 
 Enter new UNIX password:  
 Retype new UNIX password:  
 password updated successfully
 ```
 * Allow root to log in via ssh 
-`root@instance-1:~# vim /etc/ssh/sshd_config`
+`root@eve-ng:~# vim /etc/ssh/sshd_config`
 * Change `PermitRootLogin` to `yes` 
 ```
 Authentication:
@@ -125,7 +125,7 @@ PermitRootLogin yes
 * Note it is currently called `ens4`
 
 ```
-root@instance-1:~# ifconfig 
+root@eve-ng:~# ifconfig 
 ens4      Link encap:Ethernet  HWaddr 42:01:0a:8e:00:02   
           inet addr:10.142.0.2  Bcast:10.142.0.2  Mask:255.255.255.255 
           inet6 addr: fe80::4001:aff:fe8e:2/64 Scope:Link 
@@ -137,27 +137,27 @@ ens4      Link encap:Ethernet  HWaddr 42:01:0a:8e:00:02  
 ```
 * Rename the NIC
 ```
-root@instance-1:~# vim /etc/udev/rules.d/70-persistent-net.rules
+root@eve-ng:~# vim /etc/udev/rules.d/70-persistent-net.rules
 SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="42:01:0a:8e:00:02", NAME=“eth0" 
 ```
 * Reboot 
-`root@instance-1:~# shutdown -r now`
+`root@eve-ng:~# shutdown -r now`
 
 > Next download the gpg.key, install the new repository, install eve-ng. Run the below commands individually, and when installing eve-ng answer be conscious it will as you for a new MySQL password, just accept the default and press enter.
 
 ```
-root@instance-1:~# wget http://www.eve-ng.net/repo/eczema@ecze.com.gpg.key 
-root@instance-1:~# apt-key add eczema@ecze.com.gpg.key 
-root@instance-1:~# apt update 
-root@instance-1:~# add-apt-repository "deb [arch=amd64] http://www.eve-ng.net/repo xenial main" 
-root@instance-1:~# apt update 
-root@instance-1:~# apt-get install eve-ng 
+root@eve-ng:~# wget http://www.eve-ng.net/repo/eczema@ecze.com.gpg.key 
+root@eve-ng:~# apt-key add eczema@ecze.com.gpg.key 
+root@eve-ng:~# apt update 
+root@eve-ng:~# add-apt-repository "deb [arch=amd64] http://www.eve-ng.net/repo xenial main" 
+root@eve-ng:~# apt update 
+root@eve-ng:~# apt-get install eve-ng 
 ```
 
 * Run the `apt-get install eve-ng` command again, you will notice more updates being installed. 
 * When asked `What do you want to do about modified configuration file kernel-img.conf?` Select `keep the local version currently installed` 
 
-`root@instance-1:~# apt-get install eve-ng`
+`root@eve-ng:~# apt-get install eve-ng`
 
 * Run `apt-get install eve-ng` one last time just to confirm all updates are now ‘Done’
 
@@ -288,4 +288,7 @@ nxosv9k-7.0.3.I7.2
 > From here you can change the nodes settings, hostname, CPU's etc.
 * Click `Save`
 * Right click the switch and click `Start'
-* Double click the switch to ssh to it.
+* Double click the switch to connect to it.
+> Note if using SevcureCRT for example, the default is a telnet connection on a high tcp port like port 32769.
+
+**EOF**
