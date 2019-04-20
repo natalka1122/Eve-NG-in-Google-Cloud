@@ -225,8 +225,6 @@ done
 
 > Notice 'System > System Status' page will now show UKSM as green. 
 
-![Green](https://github.com/NetDevNotes/Eve-NG-in-Google-Cloud/blob/master/uksm_status.png)
-
 * SSH back into the instance
 
 * Create a new non-root user, ssh to eve-ng
