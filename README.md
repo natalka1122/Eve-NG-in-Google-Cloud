@@ -17,11 +17,11 @@ https://cloud.google.com/
 
 > You are now back at the customisable dashboard for this project. 
 
-Click `Activate Cloud Shell` (in top right toolbar) 
+Click `Activate Cloud Shell` (top right toolbar) 
 
-> The below command will create the nested virtualization supported image based on `Ubuntu 16.04 LTS`. 
+> Below command creates the nested virtualization supported image based on `Ubuntu 16.04 LTS`. 
 
-Paste the below command into the shell terminal: 
+Paste the below into the cloud shell terminal: 
 
 ```gcloud compute images create nested-virt-ubuntu --source-image-project=ubuntu-os-cloud --source-image-family=ubuntu-1604-lts --licenses="https://www.google.com/compute/v1/projects/vm-options/global/licenses/enable-vmx”```
 
@@ -29,20 +29,21 @@ Paste the below command into the shell terminal:
 
 Say `yes` to the below message if you receive it: 
 
-```API [compute.googleapis.com] not enabled on project [838774168112].Would you like to enable and retry (this will take a few minutes)?(y/N)?```
+```
+API [compute.googleapis.com] not enabled on project [838774168112].Would you like to enable and retry (this will take a few minutes)?(y/N)?
+```
 
 You will see the below output:
+
 ```
 Enabling service [compute.googleapis.com] on project [838774168112] Waiting for async operation operations/acf.4c7e21aa-6f18-4286-b0f4-10fba7115f88 to complete
 Operation finished successfully. The following command can describe the Operation details: gcloud services operations describe operations/tmo-acf.4c7e21aa-6f18-4286-b0f4-10fba7115f88Created [https://www.googleapis.com/compute/v1/projects/eve-ng-238108/global/images/nested-virt-ubuntu].NAME PROJECT FAMILY DEPRECATED STATUSnested-virt-ubuntu eve-ng-238108 READY
 ```
-> The ‘READY’ status indicated a successful install
 
-Click the 3 bars on the top left and select Compute Engine 
+> The `READY` status indicates a successful install
 
-> This is where we build the VM and define its properties. 
-
-From the VM Instance pop-up, click `Create`
+* Click the 3 bars on the top left and select `Compute Engine` 
+* Click `Create`
 
 Enter the below properties. 
 
@@ -54,39 +55,37 @@ Zone = `us-east1-b`
 
 > South Carolina currently has a $24.67 monthly estimate, whereas Australia is approximately $34.98. 
 
-> The more vCPU’s you use will increase the monthly cost. But remember when the instance is turned off you will not be charged.  Note that there are some services which even when the instance is off generates some charges, like static IPs and persistent storage for example. But the bulk of fees are from uptime. 
+> The more vCPU’s you use will increase the monthly cost. But when the instance is off you will not be charged.  Note that there are some services which even when the instance is off generates charges, static IPs and persistent storage for example. But the bulk of fees are from compute uptime. 
 
-> If you want to run IOS-XR, IOS-XRV or CSR1000v or even a lot of NXOS devices, increasing vCPU’s is a good idea. So the below customised settings are just an example. 
+> To run IOS-XR, IOS-XRV or CSR1000v or a lot of NXOS devices increase the CPU’s and memory. The below customised settings are an example. 
 
 * 'Machine Type' Leave it at ‘1 vCPU’ and click 'Customise'
-* With the sliders select 4 vCPU and 4GB of Memory. 
-* CPU platform = Intel Skylake or later 
-* GPUs = None 
-* Boot disk = Click 'Change' and select the images we created in the previous step. 
+* With the sliders select `4 vCPU` and `4GB of Memory`. 
+* CPU platform = `Intel Skylake or later` 
+* Boot disk = Click `Change` and select the images we created in the previous step. 
 * Click `Custom Images` & select `eve-ng` 
 * Click radio button `nested-virt-ubuntu` 
 * Boot disk = `Standard persistent disk`
-* Size (GB) = This depends on you and how many eve-ng images and projects you will be using. But lets pick `25GB` 
-* Identity and API access = leave as `Allow default access` 
-* Firewall = `Allow HTTP traffic` (so you can get to the eve-ng web interface) 
+* Size (GB) = This depends on you and how many eve-ng images and projects you will be using. Enter `25GB` 
+* Firewall = `Allow HTTP traffic` 
 * Click on `Management, security, disks, networking, sole tenancy` 
 * Click `Networking`
 * Click the `pencil`
 > We will use and internal and an external IP 
-> Selecting a static external IP is of course better, but it has additional costs, check them out if you want a static public IP. But I'm selecting the default `Ephemeral` 
+> Selecting a static external IP is more convenient, but has additional costs.  Select the default `Ephemeral` 
 * Primary internal IP = `Ephemeral (Automatic)` 
 * External IP = `Ephemeral` 
 * Network Service Tier = `Standard`
-> Because we chose 'South Carolina' we get the option to choose the cheaper 'standard tier' 
+> Because we chose 'South Carolina' we get the option to choose the cheaper `standard tier` 
 > Premium provides better HA, better failover, AnyCast IPs and more features. Standard is more a best effort service. 
 * Click `Done`
 * Click `Create`
 > This will create and start the VM. 
 > After a while you will see the VM’s details including its Internal and External IP. 
-> The 3 vertical disclosure dots on the right will give you options including 'Start', 'Stop' and 'Delete', amongst others. 
-> You can also download the Google Cloud app to access your VM’s from your phone to start and stop them. Might come in handy when you forget you left an instance running with 16 vCPU’s and 100GB of memory! 
+> The 3 vertical disclosure dots on the right will give you options including `Start`, `Stop` and `Delete`, amongst others. 
+> You can also download the `Google Cloud Console app` to access your VM’s from your phone to start and stop them. Might come in handy when you forget you left an instance running with 16 vCPU’s and 100GB of memory.
 * Click on `SSH` 
-> There will be a key exchange and you will then be connected. 
+> There will be a key exchange and you will be connected. 
 * Assume root and set a password: 
 
 ```
@@ -99,7 +98,8 @@ password updated successfully
 * Allow root to log in via ssh 
 `root@instance-1:~# vim /etc/ssh/sshd_config`
 * Change `PermitRootLogin` to `yes` 
-```Authentication:
+```
+Authentication:
 PermitRootLogin yes
 ```
 * Change below to yes to allow password authentication
