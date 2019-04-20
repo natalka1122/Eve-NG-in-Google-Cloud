@@ -184,12 +184,15 @@ You will be kicked out of the ssh session but should be able to ssh back in when
 > eve-ng requires the kernel to be 4.9 
 
 * Check what kernel you are using: 
+
 ```
 root@eve-ng:~# uname -r 
 4.15.0-1029-gcp
 ```
 * Change the kernel by executing below commands, there might be a better way to do this, let me know if so: 
-```root@eve-ng:~# cd /boot/
+
+```
+root@eve-ng:~# cd /boot/
 root@eve-ng:/boot# ls -lah 
 total 74M 
 drwxr-xr-x  3 root root 4.0K Apr 19 11:27 . 
