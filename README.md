@@ -90,7 +90,7 @@ Zone = `us-east1-b`
 
 Name | Type | Description | Filters | Protocols/Ports | Action | Priority | Network
 ---- | ---- | ----------- | -------  | ---------------  | ------  | -------- | ------- 
-eve-ng-inbound | Ingress | Allow ports for eve-ng | <home-ip-address> | tcp:32000-65535 | Allow | 1000 | default
+eve-ng-inbound | Ingress | Allow ports for eve-ng | home-ip-address | tcp:32000-65535 | Allow | 1000 | default
 
 * Click on `SSH` 
 > There will be a key exchange and you will be connected. 
