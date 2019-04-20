@@ -275,3 +275,8 @@ nxosv9k-7.0.3.I7.2
 
 * From File manager click on `Add new lab` and enter some details, then click `Save` 
 * From the new lab, right click on a blank space and select `Node` to add a device.
+* Select the `Cisco NX-OSv 9k` image
+> From here you can change the nodes settings, hostname, CPU's etc.
+* Click `Save`
+* Right click the switch and click `Start'
+* Double click the switch to ssh to it.
