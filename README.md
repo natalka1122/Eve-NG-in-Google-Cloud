@@ -288,4 +288,17 @@ nxosv9k-7.0.3.I7.2
 
 ![eve-ng](https://github.com/NetDevNotes/Eve-NG-in-Google-Cloud/blob/master/system_status.png)
 
+## Bonus Tip
+It takes a while to copy the qemu images over to compute instances, I recommend uploading the files to a Google Storage Bucket, then once in the bucket you can delate and create instances and when needed copy across the qcow files locally from your storage bucket.  Below is an example of the command:
+
+* SSH to your instance and run below command:
+
+```
+root@eve-ng:~# gsutil cp -r gs://eve-images/ /tmp
+Copying gs://eve-images/eve-ng.png...
+Copying gs://eve-images/nxosv9k-7.0.3.I7.1/sataa.qcow2...                       
+- [2 files][861.4 MiB/861.4 MiB]                                                
+Operation completed over 2 objects/861.4 MiB.                                    
+root@eve-ng:~# 
+```
 **EOF**
