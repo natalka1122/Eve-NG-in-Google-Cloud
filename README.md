@@ -269,7 +269,7 @@ nxosv9k-7.0.3.I7.2
 `/opt/unetlab/wrappers/unl_wrapper -a fixpermissions`
 
 * Browse to the web GUI 
-[http://35.211.127.1](http://35.211.127.1)
+[http://35.211.142.236](http://35.211.142.236)
 
 ![eve-ng](https://github.com/NetDevNotes/Eve-NG-in-Google-Cloud/blob/master/eve-ng.png)
 
