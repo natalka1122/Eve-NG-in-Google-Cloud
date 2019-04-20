@@ -287,6 +287,8 @@ nxosv9k-7.0.3.I7.2
 * Click `Save`
 * Right click the switch and click `Start'
 * Double click the switch to connect to it.
-> Note if using SevcureCRT for example, the default is a telnet connection on a high tcp port like port 32769.
+> Notice if using SecureCRT for example, the default is a telnet connection on a high tcp port like port 32769.
+
 ![eve-ng](https://github.com/NetDevNotes/Eve-NG-in-Google-Cloud/blob/master/system_status.png)
+
 **EOF**
