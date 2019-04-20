@@ -221,6 +221,8 @@ done
 * Restart 
 `root@eve-ng:/boot# shutdown -r now`
 
+> System > System Status page will now show UKSM as green. 
+
 * SSH back into the instance
 
 * Create a new non-root user, ssh to eve-ng
@@ -231,8 +233,6 @@ root@eve-ng:~# sudo usermod -a -G sudo nico
 ```root@eve-ng:~# vim /etc/ssh/sshd_config 
 PermitRootLogin no 
 ```
-
-> You might notice that when you log in via HTTP and go to System > System Status page that UKSM is now green. 
 
 * Copy a .qcow file to '/opt/unetlab/addons/qemu'. Any image copied here will show up in the eve-ng GUI, and you need to name each folder what holds the qemu file in a specific way listed [HERE](https://www.eve-ng.net/documentation/images-table)
 
