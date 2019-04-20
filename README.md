@@ -88,7 +88,9 @@ Zone = `us-east1-b`
 * Click on `SSH` 
 > There will be a key exchange and you will then be connected. 
 * Assume root and set a password: 
-```nico@instance-1:~$ sudo -s 
+
+```
+nico@instance-1:~$ sudo -s 
 root@instance-1:~# passwd 
 Enter new UNIX password:  
 Retype new UNIX password:  
@@ -221,7 +223,9 @@ done
 * Restart 
 `root@eve-ng:/boot# shutdown -r now`
 
-> System > System Status page will now show UKSM as green. 
+> Notice 'System > System Status' page will now show UKSM as green. 
+
+![Green](https://github.com/NetDevNotes/Eve-NG-in-Google-Cloud/blob/master/uksm_status.png)
 
 * SSH back into the instance
 
