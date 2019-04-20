@@ -87,9 +87,11 @@ Zone = `us-east1-b`
 > Create firewall rule to allow `tcp:32000-65535` through to your VPC
 * Navigate to: `Google Cloud Console > VPC Network > Firewall rules`
 * Create the below rule
+
 Name | Type | Description | Filters | Protocols/Ports | Action | Priority | Network
---- | --- | --- | ---  | ---  | ---  | --- | --- 
+---- | ---- | ----------- | -------  | ---------------  | ------  | -------- | ------- 
 eve-ng-inbound | Ingress | Allow ports for eve-ng | <home-ip-address> | tcp:32000-65535 | Allow | 1000 | default
+
 * Click on `SSH` 
 > There will be a key exchange and you will be connected. 
 * Assume root and set a password: 
