@@ -84,6 +84,12 @@ Zone = `us-east1-b`
 > After a while you will see the VM’s details including its Internal and External IP. 
 > The 3 vertical disclosure dots on the right will give you options including `Start`, `Stop` and `Delete`, amongst others. 
 > You can also download the `Google Cloud Console app` to access your VM’s from your phone to start and stop them. Might come in handy when you forget you left an instance running with 16 vCPU’s and 100GB of memory.
+> Create firewall rule to allow `tcp:32000-65535` through to your VPC
+* Navigate to: `Google Cloud Console > VPC Network > Firewall rules`
+* Create the below rule
+Name | Type | Description | Filters | Protocols/Ports | Action | Priority | Network
+--- | --- | --- | ---  | ---  | ---  | --- | --- 
+eve-ng-inbound | Ingress | Allow ports for eve-ng | <home-ip-address> | tcp:32000-65535 | Allow | 1000 | default
 * Click on `SSH` 
 > There will be a key exchange and you will be connected. 
 * Assume root and set a password: 
