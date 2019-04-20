@@ -102,15 +102,17 @@ password updated successfully
 ```Authentication:
 PermitRootLogin yes
 ```
-* Change to no to disable tunnelled clear text passwords
+* Change below to yes to allowpassword authentication.
 `PasswordAuthentication yes`
-> Use keys if you want to be more secure. 
+> Using keys is a better option than password auth.
 * Restart ssh 
 `service sshd restart` 
-* Now we should be able to log in via ssh from your favourite terminal emulator.  
+* Now should be able to log in via ssh your terminal emulator.  
 * eve-ng requires the first NIC to be named `eth0` 
 * Note ours is currently called `ens4`
-```root@instance-1:~# ifconfig 
+
+```
+root@instance-1:~# ifconfig 
 ens4      Link encap:Ethernet  HWaddr 42:01:0a:8e:00:02   
           inet addr:10.142.0.2  Bcast:10.142.0.2  Mask:255.255.255.255 
           inet6 addr: fe80::4001:aff:fe8e:2/64 Scope:Link 
