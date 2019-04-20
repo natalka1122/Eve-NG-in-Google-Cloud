@@ -102,14 +102,18 @@ password updated successfully
 ```Authentication:
 PermitRootLogin yes
 ```
-* Change below to yes to allowpassword authentication.
+* Change below to yes to allow password authentication
+
 `PasswordAuthentication yes`
+
 > Using keys is a better option than password auth.
+
 * Restart ssh 
 `service sshd restart` 
+
 * Now should be able to log in via ssh your terminal emulator.  
-* eve-ng requires the first NIC to be named `eth0` 
-* Note ours is currently called `ens4`
+* Next eve-ng requires the first NIC to be named `eth0` 
+* Note it is currently called `ens4`
 
 ```
 root@instance-1:~# ifconfig 
@@ -123,13 +127,15 @@ ens4      Link encap:Ethernet  HWaddr 42:01:0a:8e:00:02  
           RX bytes:862718 (862.7 KB)  TX bytes:230363 (230.3 KB) 
 ```
 * Rename the NIC
-```root@instance-1:~# vim /etc/udev/rules.d/70-persistent-net.rules
+```
+root@instance-1:~# vim /etc/udev/rules.d/70-persistent-net.rules
 SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="42:01:0a:8e:00:02", NAME=“eth0" 
 ```
 * Reboot 
 `root@instance-1:~# shutdown -r now`
 
-> Next download the gpg.key, install the new repository, install eve-ng. Run the below commands individually, and when installing eve-ng answer be conscious it will as you for a new MySQL password which you should enter: 
+> Next download the gpg.key, install the new repository, install eve-ng. Run the below commands individually, and when installing eve-ng answer be conscious it will as you for a new MySQL password, just accept the default and press enter.
+
 ```
 root@instance-1:~# wget http://www.eve-ng.net/repo/eczema@ecze.com.gpg.key 
 root@instance-1:~# apt-key add eczema@ecze.com.gpg.key 
@@ -138,13 +144,16 @@ root@instance-1:~# add-apt-repository "deb [arch=amd64] http://www.eve-ng.net/re
 root@instance-1:~# apt update 
 root@instance-1:~# apt-get install eve-ng 
 ```
-* Run the `apt-get install eve-ng` command again, you will notice more being installed. 
-* When asked 'What do you want to do about modified configuration file kernel-img.conf? Select `keep the local version currently installed` 
+
+* Run the `apt-get install eve-ng` command again, you will notice more updates being installed. 
+* When asked `What do you want to do about modified configuration file kernel-img.conf?` Select `keep the local version currently installed` 
 
 `root@instance-1:~# apt-get install eve-ng`
 
-* Run it one last time and you will see all is ‘Done’ this time 
-```root@eve-ng:~# apt-get install eve-ng 
+* Run `apt-get install eve-ng` one last time just to confirm all updates are now ‘Done’
+
+```
+root@eve-ng:~# apt-get install eve-ng 
 Reading package lists... Done 
 Building dependency tree        
 Reading state information... Done 
