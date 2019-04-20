@@ -282,9 +282,9 @@ nxosv9k-7.0.3.I7.2
 * Select the `Cisco NX-OSv 9k` image
 > From here you can change the nodes settings, hostname, CPU's etc.
 * Click `Save`
-* Right click the switch and click `Start'
+* Right click the switch and click `Start`
 * Double click the switch to connect to it.
-> Notice if using SecureCRT for example, the default is a telnet connection on a high tcp port like port 32769.
+> Notice when using SecureCRT for example, the default is a telnet connection on a high tcp port like port 32769.  This is what the previous firewall rule was for.
 
 ![eve-ng](https://github.com/NetDevNotes/Eve-NG-in-Google-Cloud/blob/master/system_status.png)
 
