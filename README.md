@@ -3,14 +3,15 @@ How to install Eve-NG in Google Cloud
 
 ![Google Cloud Dashboard](https://github.com/NetDevNotes/Eve-NG-in-Google-Cloud/blob/master/gcloud-dashboard.png)
 
-#### Create a Googe Cloud account and log in
+#### Create a Googe Cloud account which will give you $300US free credit :smile:
 https://cloud.google.com/
 
-Click `Go To Console`
-Click `Select a project`
-Click `New Project`
-Project name = `eve-ng`
-Click '`Create`
+* Log in
+* Click `Go To Console`
+* Click `Select a project`
+* Click `New Project`
+* Project name = `eve-ng`
+* Click '`Create`
 
 > After a short wait, notice the project now says `eve-ng` 
 
